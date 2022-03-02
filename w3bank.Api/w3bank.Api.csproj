@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3"/>
+    <PackageReference Include="MongoDB.Driver" Version="2.14.1"/>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\w3bank.Domain\w3bank.Domain.csproj"/>
+    <ProjectReference Include="..\w3bank.Infra\w3bank.Infra.csproj"/>
+  </ItemGroup>
+</Project>

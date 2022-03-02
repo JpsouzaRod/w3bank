@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "dgSpecHash": "cXGWnXT02qYSQTcMS6hr4yzJQWJngSO0eBu+4D/FRIvuuAawEA56OOpJ6Xg5J426Pn4J/2EGbQ3XEoNBGZh5Ug==",
+  "success": true,
+  "projectFilePath": "/home/w3-as/w3bank/w3bank.Domain/w3bank.Domain.csproj",
+  "expectedPackageFiles": [
+    "/home/w3-as/.nuget/packages/dnsclient/1.4.0/dnsclient.1.4.0.nupkg.sha512",
+    "/home/w3-as/.nuget/packages/mongodb.bson/2.14.1/mongodb.bson.2.14.1.nupkg.sha512",
+    "/home/w3-as/.nuget/packages/mongodb.driver/2.14.1/mongodb.driver.2.14.1.nupkg.sha512",
+    "/home/w3-as/.nuget/packages/mongodb.driver.core/2.14.1/mongodb.driver.core.2.14.1.nupkg.sha512",
+    "/home/w3-as/.nuget/packages/mongodb.libmongocrypt/1.3.0/mongodb.libmongocrypt.1.3.0.nupkg.sha512",
+    "/home/w3-as/.nuget/packages/sharpcompress/0.30.1/sharpcompress.0.30.1.nupkg.sha512",
+    "/home/w3-as/.nuget/packages/system.buffers/4.5.1/system.buffers.4.5.1.nupkg.sha512",
+    "/home/w3-as/.nuget/packages/system.runtime.compilerservices.unsafe/5.0.0/system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
