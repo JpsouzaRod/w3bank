@@ -1,0 +1,12 @@
+/home/w3-as/w3bank/w3bank.Infra/bin/Debug/net5.0/w3bank.Infra.deps.json
+/home/w3-as/w3bank/w3bank.Infra/bin/Debug/net5.0/w3bank.Infra.dll
+/home/w3-as/w3bank/w3bank.Infra/bin/Debug/net5.0/ref/w3bank.Infra.dll
+/home/w3-as/w3bank/w3bank.Infra/bin/Debug/net5.0/w3bank.Infra.pdb
+/home/w3-as/w3bank/w3bank.Infra/obj/Debug/net5.0/w3bank.Infra.csproj.AssemblyReference.cache
+/home/w3-as/w3bank/w3bank.Infra/obj/Debug/net5.0/w3bank.Infra.GeneratedMSBuildEditorConfig.editorconfig
+/home/w3-as/w3bank/w3bank.Infra/obj/Debug/net5.0/w3bank.Infra.AssemblyInfoInputs.cache
+/home/w3-as/w3bank/w3bank.Infra/obj/Debug/net5.0/w3bank.Infra.AssemblyInfo.cs
+/home/w3-as/w3bank/w3bank.Infra/obj/Debug/net5.0/w3bank.Infra.csproj.CoreCompileInputs.cache
+/home/w3-as/w3bank/w3bank.Infra/obj/Debug/net5.0/w3bank.Infra.dll
+/home/w3-as/w3bank/w3bank.Infra/obj/Debug/net5.0/ref/w3bank.Infra.dll
+/home/w3-as/w3bank/w3bank.Infra/obj/Debug/net5.0/w3bank.Infra.pdb

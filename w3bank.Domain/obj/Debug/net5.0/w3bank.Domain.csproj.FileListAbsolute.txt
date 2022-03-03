@@ -1,0 +1,15 @@
+/home/w3-as/w3bank/w3bank.Domain/bin/Debug/net5.0/w3bank.Domain.deps.json
+/home/w3-as/w3bank/w3bank.Domain/bin/Debug/net5.0/w3bank.Domain.dll
+/home/w3-as/w3bank/w3bank.Domain/bin/Debug/net5.0/ref/w3bank.Domain.dll
+/home/w3-as/w3bank/w3bank.Domain/bin/Debug/net5.0/w3bank.Domain.pdb
+/home/w3-as/w3bank/w3bank.Domain/bin/Debug/net5.0/w3bank.Infra.dll
+/home/w3-as/w3bank/w3bank.Domain/bin/Debug/net5.0/w3bank.Infra.pdb
+/home/w3-as/w3bank/w3bank.Domain/obj/Debug/net5.0/w3bank.Domain.csproj.AssemblyReference.cache
+/home/w3-as/w3bank/w3bank.Domain/obj/Debug/net5.0/w3bank.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/home/w3-as/w3bank/w3bank.Domain/obj/Debug/net5.0/w3bank.Domain.AssemblyInfoInputs.cache
+/home/w3-as/w3bank/w3bank.Domain/obj/Debug/net5.0/w3bank.Domain.AssemblyInfo.cs
+/home/w3-as/w3bank/w3bank.Domain/obj/Debug/net5.0/w3bank.Domain.csproj.CoreCompileInputs.cache
+/home/w3-as/w3bank/w3bank.Domain/obj/Debug/net5.0/w3bank.Domain.csproj.CopyComplete
+/home/w3-as/w3bank/w3bank.Domain/obj/Debug/net5.0/w3bank.Domain.dll
+/home/w3-as/w3bank/w3bank.Domain/obj/Debug/net5.0/ref/w3bank.Domain.dll
+/home/w3-as/w3bank/w3bank.Domain/obj/Debug/net5.0/w3bank.Domain.pdb
