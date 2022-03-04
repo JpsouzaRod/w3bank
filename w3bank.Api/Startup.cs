@@ -25,7 +25,7 @@ namespace w3bank.Api
             services.Configure<DatabaseConfig>(Configuration.GetSection(nameof(DatabaseConfig)));
             services.AddSingleton<IDatabaseConfig>(sp => sp.GetRequiredService<IOptions<DatabaseConfig>>().Value);
             
-            services.AddSingleton<ITransacaoBancariaRepository,TransacaoBancariaRepository>();
+            services.AddSingleton<IOperacaoBancariaRepository,OperacaoBancariaRepository>();
 
             services.AddCors( c=> 
             {
