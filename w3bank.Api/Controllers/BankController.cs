@@ -25,9 +25,9 @@ namespace w3bank.Api.Controllers
 
         [HttpPost]
         [Route("Conta")]
-        public IActionResult CriarConta([FromBody] InputData continha)
+        public IActionResult CriarConta([FromBody] InputData conta)
         {
-            var result = _conta.CadastrarConta(continha);
+            var result = _conta.CadastrarConta(conta);
             if(result.Sucess)    
                 return Ok(result);
             else

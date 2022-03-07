@@ -1,3 +1,4 @@
+using System;
 using MongoDB.Driver;
 using w3bank.Domain.Interfaces;
 using w3bank.Domain.ValueObject;
@@ -24,16 +25,16 @@ namespace w3bank.Domain.Repository
             var Conta = BuscarConta(conta);
             
             if(Conta != null)
-                return new OutputData (true, "Operação feita com Sucesso", Conta.Saldo);
+                return new OutputData (true, "Operação feita com Sucesso", Conta);
             else
                 return new OutputData (false, "Conta Inexistente", null); 
         }
         public OutputData CadastrarConta(InputData conta)
         {
-            var continha = BuscarConta(conta);
+            var Conta = BuscarConta(conta);
             
-            if(continha != null)
-                return new OutputData (false, "A conta já existe no Banco de Dados", continha);
+            if(Conta != null)
+                return new OutputData (false, "A conta já existe no Banco de Dados", Conta);
             else
             {
                 var NovaConta = new ProdutoConta (conta.Agencia, conta.Conta);
@@ -41,6 +42,11 @@ namespace w3bank.Domain.Repository
 
                 return new OutputData (true, "Conta criada com sucesso", NovaConta);
             }
+        }
+
+        public OutputData ConsultarExtrato(InputData conta)
+        {
+            throw new NotImplementedException();
         }
     }
 }

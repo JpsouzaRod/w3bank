@@ -1,3 +1,4 @@
+using System;
 using w3bank.Api.Services.Interfaces;
 using w3bank.Domain.Enums;
 using w3bank.Domain.Interfaces;
@@ -19,15 +20,25 @@ namespace w3bank.Api.Services.USCServiceBank
         }
         public OutputData DebitarConta(InputData conta)
         { 
-            var valor = (-1) * conta.Valor;
+            if(conta.Valor <= 0)
+                return new OutputData (false, "Error na operação", null);
 
-            var transacao = new Transacao(CodigoTransacao.DEBITO, "Saque", valor);
-            RegistrarTransacaoDebito(transacao);
+            
+            var result = _debito.SacarDinheiro(conta);
 
-            var log = new LogTransacao(CodigoTransacao.DEBITO,conta.Agencia, conta.Conta, valor);
-            RegistrarLogTransacaoDebito(log);
+            if (result.Sucess)
+            {
+                var valor = (-1) * conta.Valor;
 
-            return _debito.SacarDinheiro(conta);
+                var transacao = new Transacao(CodigoTransacao.DEBITO, "Saque", valor);
+                RegistrarTransacaoDebito(transacao);
+
+                var log = new LogTransacao(CodigoTransacao.DEBITO,conta.Agencia, conta.Conta, valor);
+                RegistrarLogTransacaoDebito(log);
+            }
+
+            return result;
+            
         }
         public void RegistrarTransacaoDebito(Transacao transacao)
         {

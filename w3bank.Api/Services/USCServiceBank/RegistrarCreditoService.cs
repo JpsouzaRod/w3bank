@@ -21,13 +21,21 @@ namespace w3bank.Api.Services.USCServiceBank
 
         public OutputData CreditarConta(InputData conta)
         {
-            var transacao = new Transacao(CodigoTransacao.CREDITO, "Deposito", conta.Valor);
-            RegistrarTransacaoCredito(transacao);
+            if(conta.Valor <= 0)
+                return new OutputData (false, "Error na operação", null);
 
-            var log = new LogTransacao(CodigoTransacao.CREDITO,conta.Agencia, conta.Conta, conta.Valor);
-            RegistrarLogTransacaoCredito(log);
+            var result = _credito.DepositarDinheiro(conta);
 
-            return _credito.DepositarDinheiro(conta);
+            if (result.Sucess)
+            {
+                var transacao = new Transacao(CodigoTransacao.CREDITO, "Deposito", conta.Valor);
+                RegistrarTransacaoCredito(transacao);
+
+                var log = new LogTransacao(CodigoTransacao.CREDITO,conta.Agencia, conta.Conta, conta.Valor);
+                RegistrarLogTransacaoCredito(log);
+            }
+
+            return result;
         }  
         public void RegistrarTransacaoCredito(Transacao transacao)
         {
