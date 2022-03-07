@@ -11,7 +11,7 @@ namespace w3bank.Domain.ValueObject
             Valor = valor;
         }
         
-        public double Valor{get;set; }
+        public double Valor {get;set; }
     }
 
 }

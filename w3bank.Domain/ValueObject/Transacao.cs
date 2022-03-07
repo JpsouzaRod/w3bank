@@ -4,16 +4,15 @@ namespace w3bank.Domain.ValueObject
 {
     public class Transacao
     {
-        public Transacao(CodigoTransacao codigo, string descricao, double valor)
+        public Transacao(CodigoTransacao codigo, string descricao, double natureza)
         {
             Codigo = codigo;
             Descricao = descricao;
-            Valor = valor;
+            Natureza = natureza;
         }
-        public CodigoTransacao Codigo;
-        public string Descricao;
-        public double Valor;
 
-        
+        public CodigoTransacao Codigo {get; set;}
+        public string Descricao {get; set;}
+        public double Natureza {get; set;}
     }
 }

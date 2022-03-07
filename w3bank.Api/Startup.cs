@@ -9,6 +9,9 @@ using w3bank.Domain.Interfaces;
 using w3bank.Domain.Repository;
 using w3bank.Infra.Configurations;
 using Newtonsoft.Json.Serialization;
+using w3bank.Api.Services.Interfaces;
+using w3bank.Api.Services.USCServiceBank;
+
 namespace w3bank.Api
 {
     public class Startup
@@ -25,7 +28,14 @@ namespace w3bank.Api
             services.Configure<DatabaseConfig>(Configuration.GetSection(nameof(DatabaseConfig)));
             services.AddSingleton<IDatabaseConfig>(sp => sp.GetRequiredService<IOptions<DatabaseConfig>>().Value);
             
-            services.AddSingleton<IOperacaoBancariaRepository,OperacaoBancariaRepository>();
+            services.AddSingleton<IContaRepository, ContaRepository>();
+            
+            services.AddSingleton<IServicoBancacarioRepository,ServicoBancacarioRepository>();
+            services.AddSingleton<ITransacaoLogRepository, TransacaoLogRepository>();
+            services.AddSingleton<ITransacaoRepository, TransacaoRepository>();
+            
+            services.AddSingleton<IRegistrarCreditoService, RegistrarCreditoService>();
+            services.AddSingleton<IRegistrarDebitoService, RegistrarDebitoService>();
 
             services.AddCors( c=> 
             {

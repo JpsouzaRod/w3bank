@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using w3bank.Api.Services.Interfaces;
 using w3bank.Domain.Interfaces;
 using w3bank.Domain.ValueObject;
 
@@ -9,20 +10,35 @@ namespace w3bank.Api.Controllers
     [Route("w3bank")]
     public class BankController : ControllerBase
     {
-        private readonly IOperacaoBancariaRepository _operacao;
+        private readonly IContaRepository _conta;
+        private readonly IRegistrarCreditoService _credito;
+        private readonly IRegistrarDebitoService _debito;
         private readonly ILogger<BankController> _logger;
 
-        public BankController(IOperacaoBancariaRepository operacao, ILogger<BankController> logger)
+        public BankController(ILogger<BankController> logger, IRegistrarCreditoService credito, IRegistrarDebitoService debito, IContaRepository conta)
         {
-            _operacao = operacao;
             _logger = logger;
+            _credito = credito;
+            _debito = debito;
+            _conta = conta;
         }
 
         [HttpPost]
         [Route("Conta")]
-        public IActionResult CriarConta([FromBody] InputData conta)
+        public IActionResult CriarConta([FromBody] InputData continha)
         {
-            var result = _operacao.CriarConta(conta);
+            var result = _conta.CadastrarConta(continha);
+            if(result.Sucess)    
+                return Ok(result);
+            else
+                return BadRequest(result);
+        }
+
+        [HttpGet]
+        [Route("Saldo")]
+        public IActionResult ConsultarSaldo([FromBody] InputData conta)
+        {
+            var result = _conta.ConsultarSaldo(conta);
             if(result.Sucess)    
                 return Ok(result);
             else
@@ -33,7 +49,7 @@ namespace w3bank.Api.Controllers
         [Route("Deposito")]
         public IActionResult DepositarDinheiro(InputData conta)
         {
-            var result = _operacao.DepositarDinheiro(conta);
+            var result = _credito.CreditarConta(conta);
             if(result.Sucess)    
                 return Ok(result);
             else
@@ -44,7 +60,7 @@ namespace w3bank.Api.Controllers
         [Route("Saque")]
         public IActionResult SacarDinheiro(InputData conta)
         {
-            var result = _operacao.SacarDinheiro(conta);
+            var result = _debito.DebitarConta(conta);
 
             if(result.Sucess)    
                 return Ok(result);
