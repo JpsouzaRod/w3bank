@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using w3bank.Api.Services.Interfaces;
-using w3bank.Domain.Interfaces;
-using w3bank.Domain.ValueObject;
+using w3bank.Domain.BankContext.Interfaces;
+using w3bank.Domain.BankContext.    ValueObject;
 
 namespace w3bank.Api.Controllers
 {
@@ -25,7 +25,7 @@ namespace w3bank.Api.Controllers
 
         [HttpPost]
         [Route("Conta")]
-        public IActionResult CriarConta([FromBody] InputData conta)
+        public IActionResult CriarConta([FromBody] Request conta)
         {
             var result = _conta.CadastrarConta(conta);
             if(result.Sucess)    
@@ -36,7 +36,7 @@ namespace w3bank.Api.Controllers
 
         [HttpGet]
         [Route("Saldo")]
-        public IActionResult ConsultarSaldo([FromBody] InputData conta)
+        public IActionResult ConsultarSaldo([FromBody] Request conta)
         {
             var result = _conta.ConsultarSaldo(conta);
             if(result.Sucess)    
@@ -45,9 +45,21 @@ namespace w3bank.Api.Controllers
                 return BadRequest(result);
         }
 
+        [HttpGet]
+        [Route("Extrato")]
+        public IActionResult ConsultarExtrato([FromBody] RequestExtrato conta)
+        {
+            var result = _conta.ConsultarExtrato(conta);
+            if(result.Sucess)    
+                return Ok(result);
+            else
+                return BadRequest(result);
+        }
+
+
         [HttpPut]
         [Route("Deposito")]
-        public IActionResult DepositarDinheiro(InputData conta)
+        public IActionResult DepositarDinheiro(RequestTransacao conta)
         {
             var result = _credito.CreditarConta(conta);
             if(result.Sucess)    
@@ -58,7 +70,7 @@ namespace w3bank.Api.Controllers
 
         [HttpPut]
         [Route("Saque")]
-        public IActionResult SacarDinheiro(InputData conta)
+        public IActionResult SacarDinheiro(RequestTransacao conta)
         {
             var result = _debito.DebitarConta(conta);
 

@@ -1,6 +1,8 @@
-using w3bank.Domain.Enums;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using w3bank.Domain.BankContext.Enums;
 
-namespace w3bank.Domain.ValueObject
+namespace w3bank.Domain.BankContext.Entities
 {
     public class Transacao
     {
@@ -11,6 +13,8 @@ namespace w3bank.Domain.ValueObject
             Natureza = natureza;
         }
 
+        [BsonId]
+        public ObjectId Id { get; set; }
         public CodigoTransacao Codigo {get; set;}
         public string Descricao {get; set;}
         public double Natureza {get; set;}

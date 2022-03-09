@@ -1,8 +1,8 @@
-namespace w3bank.Domain.ValueObject
+namespace w3bank.Domain.BankContext.ValueObject
 {
-    public class OutputData
+    public class Response
     {
-        public OutputData(bool sucess, string message, object data)
+        public Response(bool sucess, string message, object data)
         {
             Sucess = sucess;
             Message = message;

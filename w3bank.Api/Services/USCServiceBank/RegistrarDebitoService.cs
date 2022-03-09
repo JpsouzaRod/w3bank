@@ -1,8 +1,9 @@
 using System;
 using w3bank.Api.Services.Interfaces;
-using w3bank.Domain.Enums;
-using w3bank.Domain.Interfaces;
-using w3bank.Domain.ValueObject;
+using w3bank.Domain.BankContext.Entities;
+using w3bank.Domain.BankContext.Enums;
+using w3bank.Domain.BankContext.Interfaces;
+using w3bank.Domain.BankContext.ValueObject;
 
 namespace w3bank.Api.Services.USCServiceBank
 {
@@ -18,37 +19,31 @@ namespace w3bank.Api.Services.USCServiceBank
             _registro = registro;
             _log = log;
         }
-        public OutputData DebitarConta(InputData conta)
+        public Response DebitarConta(RequestTransacao conta)
         { 
             if(conta.Valor <= 0)
-                return new OutputData (false, "Error na operação", null);
+                return new Response (false, "Error na operação", null);
 
             
             var result = _debito.SacarDinheiro(conta);
 
             if (result.Sucess)
             {
-                var valor = (-1) * conta.Valor;
-
-                var transacao = new Transacao(CodigoTransacao.DEBITO, "Saque", valor);
-                RegistrarTransacaoDebito(transacao);
-
-                var log = new LogTransacao(CodigoTransacao.DEBITO,conta.Agencia, conta.Conta, valor);
-                RegistrarLogTransacaoDebito(log);
+                conta.Valor = (-1) * conta.Valor;
+                
+                RegistrarTransacaoDebito(conta);
             }
 
             return result;
             
         }
-        public void RegistrarTransacaoDebito(Transacao transacao)
+        public void RegistrarTransacaoDebito(RequestTransacao conta)
         {
+             var transacao = new Transacao(CodigoTransacao.DEBITO, "Saque", conta.Valor);
             _registro.RegistrarTransacao(transacao);
-        }
-        public void RegistrarLogTransacaoDebito(LogTransacao log)
-        {
+            
+            var log = new LogTransacao (CodigoTransacao.DEBITO, conta.Agencia, conta.Conta, conta.Valor);
             _log.RegistrarLog(log);
         }
-
-        
     }
 }

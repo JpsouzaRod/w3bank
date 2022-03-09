@@ -1,4 +1,4 @@
-namespace w3bank.Domain.Enums
+namespace w3bank.Domain.BankContext.Enums
 {
     public enum CodigoTransacao
     {

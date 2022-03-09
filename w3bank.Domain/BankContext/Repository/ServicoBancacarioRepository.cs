@@ -1,10 +1,11 @@
 using System;
 using MongoDB.Driver;
-using w3bank.Domain.Interfaces;
-using w3bank.Domain.ValueObject;
+using w3bank.Domain.BankContext.Entities;
+using w3bank.Domain.BankContext.Interfaces;
+using w3bank.Domain.BankContext.ValueObject;
 using w3bank.Infra.Configurations;
 
-namespace w3bank.Domain.Repository
+namespace w3bank.Domain.BankContext.Repository
 {
     public class ServicoBancacarioRepository : IServicoBancacarioRepository
     {
@@ -15,14 +16,14 @@ namespace w3bank.Domain.Repository
             _conta = client.GetDatabase("w3bank").GetCollection<ProdutoConta>("ProdutoConta");
         }
 
-        public ProdutoConta BuscarConta(InputData conta)
+        private ProdutoConta BuscarConta(int agencia, int conta)
         {
-            var Conta = _conta.Find(x => x.Conta == conta.Conta && x.Agencia == conta.Agencia).FirstOrDefault();
+            var Conta = _conta.Find(x => x.Agencia == agencia && x.Conta == conta).FirstOrDefault();
             return Conta;
         }
-        public OutputData DepositarDinheiro(InputData conta)
+        public Response DepositarDinheiro(RequestTransacao conta)
         {   
-            var Conta = BuscarConta(conta);
+            var Conta = BuscarConta(conta.Agencia, conta.Conta);
             
             if(Conta != null)
             {
@@ -30,32 +31,32 @@ namespace w3bank.Domain.Repository
 
                 _conta.ReplaceOne(conta => conta.Id == Conta.Id, Conta);
                 
-                return new OutputData (true, "Operação feita com Sucesso", Conta);
+                return new Response (true, "Operação feita com Sucesso", Conta);
             }
             else
-                return new OutputData (false, "Conta Inexistente", null);
+                return new Response (false, "Conta Inexistente", null);
         }
 
-        public OutputData SacarDinheiro(InputData conta)
+        public Response SacarDinheiro(RequestTransacao conta)
         {
-            var Conta = BuscarConta(conta);
+            var Conta = BuscarConta(conta.Agencia, conta.Conta);
             
             if(Conta != null)
             {
                 if(Conta.Saldo < conta.Valor)
                 {
-                    return new OutputData (false, "Saldo insuficiente para saque", Conta); 
+                    return new Response (false, "Saldo insuficiente para saque", Conta); 
                 }
                 else
                 {
                     Conta.DebitarConta(conta.Valor);
                     _conta.ReplaceOne(conta => conta.Id == Conta.Id, Conta);
                     
-                    return new OutputData (true, "Operação feita com Sucesso", Conta);
+                    return new Response (true, "Operação feita com Sucesso", Conta);
                 }
             }
             else
-                return new OutputData (false, "Conta Inexistente", null);        
+                return new Response (false, "Conta Inexistente", null);        
         }
     }
 }

@@ -1,6 +1,6 @@
 using System;
 
-namespace w3bank.Domain.ValueObject
+namespace w3bank.Domain.BankContext.ValueObject
 {
     public class Extrato
     {

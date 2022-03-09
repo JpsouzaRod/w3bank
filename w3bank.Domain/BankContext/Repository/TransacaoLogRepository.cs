@@ -1,9 +1,9 @@
 using MongoDB.Driver;
-using w3bank.Domain.Interfaces;
-using w3bank.Domain.ValueObject;
+using w3bank.Domain.BankContext.Interfaces;
+using w3bank.Domain.BankContext.Entities;
 using w3bank.Infra.Configurations;
 
-namespace w3bank.Domain.Repository
+namespace w3bank.Domain.BankContext.Repository
 {
     public class TransacaoLogRepository : ITransacaoLogRepository
     {

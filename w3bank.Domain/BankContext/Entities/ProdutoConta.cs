@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using w3bank.Domain.BankContext.ValueObject;
 
-namespace w3bank.Domain.ValueObject
+namespace w3bank.Domain.BankContext.Entities
 {
     public class ProdutoConta
     {

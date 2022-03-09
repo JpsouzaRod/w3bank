@@ -1,6 +1,6 @@
-using w3bank.Domain.ValueObject;
+using w3bank.Domain.BankContext.Entities;
 
-namespace w3bank.Domain.Interfaces
+namespace w3bank.Domain.BankContext.Interfaces
 {
     public interface ITransacaoRepository
     {
