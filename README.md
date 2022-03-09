@@ -10,7 +10,7 @@
 ### Fases do desenvolvimento
 
 ### Fase 1
--   [x] O Sistema Deve Criar Uma Nova Conta
+-   [x] Criar Conta
 -   [x] Fazer Depósito
 -   [x] Fazer Saque
 -   [x] Consultar Saldo
