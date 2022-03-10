@@ -5,7 +5,7 @@ using w3bank.Domain.BankContext.Enums;
 
 namespace w3bank.Domain.BankContext.Entities
 {
-    public class LogTransacao
+    public class LogTransacao : Entity
     {
         public LogTransacao(CodigoTransacao codigo, int agencia, int conta, double valor)
         {
@@ -15,13 +15,10 @@ namespace w3bank.Domain.BankContext.Entities
             Conta = conta;
             Valor = valor;
         }
-
-        [BsonId]
-        public ObjectId Id { get; set; }
-        public DateTime Data {get; set;}
-        public CodigoTransacao Codigo {get; set;}
         public int Agencia {get; set;}
         public int Conta  {get; set;}
+        public DateTime Data {get; set;}
+        public CodigoTransacao Codigo {get; set;}
         public double Valor {get; set;}
     }
 }

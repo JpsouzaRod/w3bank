@@ -7,4 +7,4 @@ build_property.PublishSingleFile =
 build_property.IncludeAllContentForSelfExtract = 
 build_property._SupportedPlatformList = Android,iOS,Linux,macOS,Windows
 build_property.RootNamespace = w3bank.Api
-build_property.ProjectDir = /home/w3-as/w3bank/w3bank.Api/
+build_property.ProjectDir = /home/w3-as/w3bank/src/w3bank.Api/

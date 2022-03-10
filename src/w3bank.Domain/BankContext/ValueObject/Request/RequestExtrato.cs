@@ -4,10 +4,12 @@ using w3bank.Domain.BankContext.ValueObject;
 
 namespace w3bank.Domain.BankContext.ValueObject
 {
-    public class RequestExtrato : Request
+    public class RequestExtrato : RequestBase
     {
-        public RequestExtrato(int agencia, int conta, string dataInicial, string dataFinal) : base(agencia, conta)
+        public RequestExtrato(int agencia, int conta, string dataInicial, string dataFinal)
         {
+            Agencia = agencia;
+            Conta = conta;
             DataInicial = DateTime.Parse(dataInicial).Date;
             DataFinal = DateTime.Parse(dataFinal).Date;
         }

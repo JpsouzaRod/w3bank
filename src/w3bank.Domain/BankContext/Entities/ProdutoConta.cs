@@ -5,7 +5,7 @@ using w3bank.Domain.BankContext.ValueObject;
 
 namespace w3bank.Domain.BankContext.Entities
 {
-    public class ProdutoConta
+    public class ProdutoConta : Entity
     {
         public ProdutoConta(int agencia, int conta)
         {
@@ -14,9 +14,6 @@ namespace w3bank.Domain.BankContext.Entities
             Saldo = 0;
             Extratos = new List<Extrato>();
         }
-
-        [BsonId]
-        public ObjectId Id { get; set; }
         public int Agencia { get; set; }
         public int Conta { get; set; }
         public double Saldo { get; set; }

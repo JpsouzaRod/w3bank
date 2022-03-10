@@ -4,7 +4,7 @@ using w3bank.Domain.BankContext.Enums;
 
 namespace w3bank.Domain.BankContext.Entities
 {
-    public class Transacao
+    public class Transacao : Entity
     {
         public Transacao(CodigoTransacao codigo, string descricao, double natureza)
         {
@@ -12,9 +12,6 @@ namespace w3bank.Domain.BankContext.Entities
             Descricao = descricao;
             Natureza = natureza;
         }
-
-        [BsonId]
-        public ObjectId Id { get; set; }
         public CodigoTransacao Codigo {get; set;}
         public string Descricao {get; set;}
         public double Natureza {get; set;}
