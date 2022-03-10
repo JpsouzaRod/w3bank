@@ -7,5 +7,6 @@ namespace w3bank.Api.Services.Interfaces
     {
         public Response CreditarConta(RequestTransacao conta);
         public void RegistrarTransacaoCredito(RequestTransacao conta);
+        public void RegistrarLog (RequestTransacao conta);
     }
 }

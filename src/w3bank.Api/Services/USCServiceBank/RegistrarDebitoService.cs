@@ -42,6 +42,10 @@ namespace w3bank.Api.Services.USCServiceBank
              var transacao = new Transacao(CodigoTransacao.DEBITO, "Saque", conta.Valor);
             _registro.RegistrarTransacao(transacao);
             
+            RegistrarLog(conta);
+        }
+        public void RegistrarLog(RequestTransacao conta)
+        {
             var log = new LogTransacao (CodigoTransacao.DEBITO, conta.Agencia, conta.Conta, conta.Valor);
             _log.RegistrarLog(log);
         }

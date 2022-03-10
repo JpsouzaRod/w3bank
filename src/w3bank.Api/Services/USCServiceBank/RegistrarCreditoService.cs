@@ -30,12 +30,16 @@ namespace w3bank.Api.Services.USCServiceBank
             }
 
             return result;
-        }  
+        }
         public void RegistrarTransacaoCredito(RequestTransacao conta)
         {
             var transacao = new Transacao(CodigoTransacao.CREDITO, "Deposito", conta.Valor);
             _registro.RegistrarTransacao(transacao);
             
+             RegistrarLog(conta);
+        }
+        public void RegistrarLog(RequestTransacao conta)
+        {
             var log = new LogTransacao (CodigoTransacao.CREDITO, conta.Agencia, conta.Conta, conta.Valor);
             _log.RegistrarLog(log);
         }
